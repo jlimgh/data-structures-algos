@@ -156,9 +156,36 @@ function PriorityQueue() {
 ///////////////QUEUE - CIRCULAR QUEUE
 //////////ex. hot potato, 
 
-function hotPotato() {
-	
-}
+function hotPotato(nameList, num) {
+	var queue = new Queue();
+
+	for (var i=0; i <nameList.length; i++) {
+		queue.enqueue(nameList[i]);
+	}
+
+	var eliminated = '';
+
+	while(queue.size() > 1) {
+		for (var i=0; i<num; i++) {
+			queue.enqueue(queue.dequeue());
+		}
+		eliminated = queue.dequeue();
+		console.log(eliminated + ' was eliminted from the Hot Potato game.');
+
+	}
+
+	return queue.dequeue();
+};
+
+////Hot Potato example
+var names = ['Jeff', 'James', 'Jane', 'Carl', 'George'];
+var winner = hotPotato(names, 7);
+console.log('The winner is: ' + winner);
+
+//////////////
+
+
+
 
 
 
